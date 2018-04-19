@@ -10,7 +10,8 @@ public class Main {
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		//Contains call to create host or client
-		System.out.println("Welcome");
+		System.out.println("Welcome to the Web Chat program");
+		System.out.println("Type [Host] to create a host, [client] to connect to a host");
 		String service;
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		service = reader.readLine();
@@ -29,6 +30,8 @@ public class Main {
 		else if (service.equals("client")||service.equals("Client")){
 
 			Client user = new Client();
+
+			System.out.println("Conecting to local host...");
 			user.ClientConnect("localhost",9000);
 
 

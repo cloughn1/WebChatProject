@@ -31,20 +31,27 @@ public class Client{
             return;
         }
         System.out.println("Connection Established...");
+
+        //Insert "Type desired username, have host head and store it
+        System.out.println(input.readLine());
         temp = reader.next();
 
-        while(true){
 
-            output.println(temp);
-
-            temp = input.readLine();
-            System.out.println(temp);
-            temp = reader.next();
+        Thread read = new ChatThread(input);
+        read.start();
 
 
-        }
+        while(read.isAlive()){
+
+        output.println(temp);
+
+        //temp = input.readLine();
+        //System.out.println(temp);
+        temp = reader.next();
 
 
+         }
 
     }
+
 }

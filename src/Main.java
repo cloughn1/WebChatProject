@@ -9,6 +9,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
+		//Contains call to create host or client
 		System.out.println("Welcome");
 		String service;
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -27,7 +28,8 @@ public class Main {
 
 		else if (service.equals("client")||service.equals("Client")){
 
-			System.out.println("Nooooo");
+			Client user = new Client();
+			user.ClientConnect("localhost",9000);
 
 
 		}

@@ -11,10 +11,34 @@ public class Client{
     //ClientConnect will open a stream, and create a new thread to accept any an all input from the host
     public void ClientConnect(String ip, int Port) throws java.io.IOException{
         Socket Client;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         Client = new Socket(ip, Port);
+        if(Client==null){
+            System.out.println("Error: No Host detected");
+            return;
+        }
+        DataInputStream input;
+        PrintStream output;
+        String temp;
+
+        input = new DataInputStream(Client.getInputStream());
+        output = new PrintStream(Client.getOutputStream());
+
+        if(input==null||output==null){
+            System.out.println("Input/Output Error");
+            return;
+        }
+        System.out.println("Connection Established...");
+        temp = reader.readLine();
+        while(temp!=null){
+            output.println(temp);
+            temp = input.readUTF();
+            System.out.println(temp);
+            temp = reader.readLine();
 
 
+        }
 
 
 

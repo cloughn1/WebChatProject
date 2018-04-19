@@ -5,13 +5,14 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 public class Client{
     //ClientConnect is meant to be run with the input of the ip and port of the host
     //ClientConnect will open a stream, and create a new thread to accept any an all input from the host
     public void ClientConnect(String ip, int Port) throws java.io.IOException{
         Socket Client;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        Scanner reader = new Scanner(System.in);
 
         Client = new Socket(ip, Port);
         if(Client==null){
@@ -30,12 +31,15 @@ public class Client{
             return;
         }
         System.out.println("Connection Established...");
-        temp = reader.readLine();
-        while(temp!=null){
+        temp = reader.next();
+
+        while(true){
+
             output.println(temp);
-            temp = input.readUTF();
+
+            temp = input.readLine();
             System.out.println(temp);
-            temp = reader.readLine();
+            temp = reader.next();
 
 
         }

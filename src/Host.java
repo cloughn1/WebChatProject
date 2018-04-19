@@ -18,15 +18,17 @@ public class Host {
         PrintStream output;
         String temp;
         Host = new ServerSocket(Port);
-        int i =1;
+
 
 
         client = Host.accept();
+        System.out.println("client found: "+ client.getLocalPort());
         input = new DataInputStream(client.getInputStream());
         output = new PrintStream(client.getOutputStream());
 
         while (true){
-            temp = input.readUTF();
+            temp = input.readLine();
+            System.out.println(temp);
             output.println("Server: "+ temp);
 
         }

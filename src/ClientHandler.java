@@ -80,8 +80,9 @@ public class ClientHandler extends Thread {
         }
     }
     public void quit(){
-
+        index.DeleteClient(output,Username);
         output.println("Server: Exit");
+
 
     }
 }

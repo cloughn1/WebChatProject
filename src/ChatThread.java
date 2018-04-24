@@ -20,7 +20,7 @@ public class ChatThread extends Thread {
     public void read() throws java.io.IOException{
         String temp=null;
 
-        System.out.println("Reader created");
+        System.out.println("Reader created, type [exit] in order to quit");
         temp =input.readLine();
         while (true){
             System.out.println(temp);

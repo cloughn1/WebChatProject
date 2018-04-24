@@ -27,6 +27,21 @@ public class ClientCatalogue {
         }
 
     }
+    public void DeleteClient(PrintStream address, String Name){
+        synchronized (this){
+            for (int i = 1; i < maxclients; i++) {
+                if (catalogue[i] == address) {
+                    catalogue[i] = null;
+                    Usernames[i] = null;
+                    return;
+                }
+            }
+            System.out.println("Error on deleting user "+ Name +" on exit");
+
+        }
+
+
+    }
     public PrintStream[] GetClients(){
         return catalogue;
     }

@@ -11,7 +11,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		//Contains call to create host or client
 		System.out.println("Welcome to the Web Chat program");
-		System.out.println("Type [Host] to create a host, [client] to connect to a host");
+		System.out.println("Type [Host] to create a host, [Client] to connect to a host");
 		String service;
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		service = reader.readLine();

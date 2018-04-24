@@ -34,7 +34,7 @@ public class Client{
 
         //Insert "Type desired username, have host head and store it
         System.out.println(input.readLine());
-        temp = reader.next();
+        temp = reader.nextLine();
 
 
         Thread read = new ChatThread(input);
@@ -47,7 +47,8 @@ public class Client{
 
         //temp = input.readLine();
         //System.out.println(temp);
-        temp = reader.next();
+        temp = reader.nextLine();
+
 
 
          }

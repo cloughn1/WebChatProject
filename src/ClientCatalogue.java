@@ -16,11 +16,13 @@ public class ClientCatalogue {
     //}
 
     public  void AddClient(PrintStream address, String Name){
-        for(int i=1;i<maxclients;i++){
-            if(catalogue[i]==null){
-                catalogue[i]=address;
-                Usernames[i]=Name;
-                return;
+        synchronized (this) {
+            for (int i = 1; i < maxclients; i++) {
+                if (catalogue[i] == null) {
+                    catalogue[i] = address;
+                    Usernames[i] = Name;
+                    return;
+                }
             }
         }
 

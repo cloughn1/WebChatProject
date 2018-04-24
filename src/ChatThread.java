@@ -19,12 +19,14 @@ public class ChatThread extends Thread {
     }
     public void read() throws java.io.IOException{
         String temp=null;
+
         System.out.println("Reader created");
         temp =input.readLine();
         while (true){
             System.out.println(temp);
+
             temp =input.readLine();
-            if(temp.equals("Server: EXIT"))break;
+            if(temp.equals("Server: EXIT")||temp.equals("Server: Exit")||temp.equals("Server: exit"))break;
 
         }
 

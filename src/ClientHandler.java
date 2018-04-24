@@ -21,7 +21,9 @@ public class ClientHandler extends Thread {
         this.index=index;
     }
     public void linkCatalogue(ClientCatalogue index){
-        this.index = index;
+        synchronized (this) {
+            this.index = index;
+        }
     }
     public void run(){
         //The creation of the thread, first gets a username for the Client, then sends it to read
@@ -37,7 +39,9 @@ public class ClientHandler extends Thread {
         }
         //send to read
         System.out.println("User has chosen name: "+ Username);
-        index.AddClient(output,Username);
+
+        index.AddClient(output, Username);
+
         try{
             read();
         }
@@ -49,25 +53,35 @@ public class ClientHandler extends Thread {
         //This is meant to be the dedicated read for the client
         //In a loop read input from client, then send the message to broadcast
         //Additionally if client input matches a command, it will be read and redirected from here
-        String temp;
-
+        String temp=null;
+        String endmark=null;
         System.out.println("Reading from User: "+ Username);
         while (true){
+
             temp = input.readLine();
-            System.out.println(temp);
+            System.out.println(Username+" :"+temp);
             //output.println(Username+": "+ temp);
+            if(temp.equals("EXIT")||temp.equals("Exit")||temp.equals("exit")){quit();break;}
             broadcast(temp);
+
         }
 
     }
 
     public void  broadcast(String temp){
         //takes the input from read and sends to all clients
-        PrintStream[] catalogue = index.catalogue;
-        for(int i=1;i<index.maxclients;i++) {
-            if (catalogue[i] != null) {
-                catalogue[i].println(Username+": "+temp);
+        synchronized (this) {
+            PrintStream[] catalogue = index.catalogue;
+            for (int i = 1; i < index.maxclients; i++) {
+                if (catalogue[i] != null) {
+                    catalogue[i].println(Username + ": " + temp );
+                }
             }
         }
+    }
+    public void quit(){
+
+        output.println("Server: Exit");
+
     }
 }

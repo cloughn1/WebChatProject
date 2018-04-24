@@ -19,6 +19,7 @@ public class Host {
         String temp;
         Host = new ServerSocket(Port);
         ClientCatalogue index = new ClientCatalogue();
+        System.out.println("Host Created");
 
 
         while (true) {

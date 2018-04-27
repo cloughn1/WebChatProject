@@ -30,9 +30,20 @@ public class Main {
 		else if (service.equals("client")||service.equals("Client")){
 
 			Client user = new Client();
+			System.out.println("[local] for local host, else enter ip");
 
-			System.out.println("Conecting to local host...");
-			user.ClientConnect("localhost",9000);
+
+			service = reader.readLine();
+			if(service=="local"||service=="Local") {
+				System.out.println("Conecting to local host...");
+				user.ClientConnect("localhost", 9000);
+			}
+
+			else {
+				System.out.println("Connecting to host: "+ service);
+				user.ClientConnect(service,9000);
+
+			}
 
 
 		}

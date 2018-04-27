@@ -13,8 +13,10 @@ public class Client{
     public void ClientConnect(String ip, int Port) throws java.io.IOException{
         Socket Client;
         Scanner reader = new Scanner(System.in);
+        System.out.println("Setting up socket");
 
-        Client = new Socket(ip, Port);
+        Client = new Socket(ip,Port);
+        System.out.println("Created socket");
         if(Client==null){
             System.out.println("Error: No Host detected");
             return;
@@ -23,9 +25,10 @@ public class Client{
         PrintStream output;
         String temp;
 
+
         input = new DataInputStream(Client.getInputStream());
         output = new PrintStream(Client.getOutputStream());
-
+        System.out.println("Created Datastreams");
         if(input==null||output==null){
             System.out.println("Input/Output Error");
             return;

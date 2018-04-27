@@ -34,7 +34,7 @@ public class Main {
 
 
 			service = reader.readLine();
-			if(service=="local"||service=="Local") {
+			if(service.equals("local")||service.equals("Local")) {
 				System.out.println("Conecting to local host...");
 				user.ClientConnect("localhost", 9000);
 			}
